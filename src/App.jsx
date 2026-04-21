@@ -1,21 +1,33 @@
-import { useState } from "react";
-import Input from "./components/general/Input.jsx";
-import SelectInput from "./components/general/SelectInput.jsx";
-import Button from "./components/general/Button.jsx";
-import SearchBar from "./components/general/SearchBar.jsx";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect } from "react";
+import "./App.css";
+import axios from "axios";
+import Authentication from "./routes/auth/Authentication.jsx";
+import Dashboard from "./routes/dashboard/Dashboard.jsx";
 
 function App() {
-  const [inputVal, setInputVal] = useState("");
-  const [selectVal, setSelectVal] = useState("Default");
-  const [search, setSearch] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userUsername, setUserUsername] = useState("");
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    axios.post("/api/auth/", null, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+      .then((response) => {
+        setIsLoggedIn(true);
+        setUserUsername(response.data.username);
+      })
+      .catch(() => {});
+  }, []);
 
   return (
-    <div className="App" style={{ padding: "20px", background: "#0d0d1a", minHeight: "100vh", display: "flex", flexDirection: "column", gap: "20px" }}>
-      <Input label="Username:" type="text" value={inputVal} setValue={setInputVal} />
-      <SelectInput label="Sort:" options={["Default", "Latest", "Oldest", "Highest Rated", "Lowest Rated"]} value={selectVal} setValue={setSelectVal} />
-      <Button onClick={() => alert("clicked!")} />
-      <SearchBar title={search} setTitle={setSearch} icon={faMagnifyingGlass}/>
+    <div className="App">
+      {isLoggedIn
+        ? <Dashboard userUsername={userUsername} setIsLoggedIn={setIsLoggedIn} />
+        : <Authentication setIsLoggedIn={setIsLoggedIn} setUserUsername={setUserUsername} />
+      }
     </div>
   );
 }

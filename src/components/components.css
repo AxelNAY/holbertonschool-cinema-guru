@@ -1,0 +1,11 @@
+.activity {
+    list-style: none;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.activity-username,
+.activity-title {
+    color: #e50914;
+    font-weight: bold;
+}

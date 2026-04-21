@@ -1,0 +1,98 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0d0d1a;
+}
+
+.auth-form {
+  width: 500px;
+  border: 2px solid #1a1a1a;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.auth-header {
+  display: flex;
+  width: 100%;
+}
+
+.auth-btn {
+  flex: 1;
+  border-radius: 0 !important;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.auth-btn-active {
+  background-color: #cc0000 !important;
+}
+
+.auth-btn-inactive {
+  background-color: #8b0000 !important;
+}
+
+.auth-btn-active:hover {
+  background-color: #e00000 !important;
+}
+
+.auth-btn-inactive:hover {
+  background-color: #a00000 !important;
+}
+
+.auth-body {
+  background-color: #fff;
+  padding: 24px;
+  min-height: 80px;
+}
+
+.auth-body-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.auth-body-content h2 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #111;
+  margin: 0 0 8px;
+}
+
+.auth-body-content .input-container {
+  width: 100%;
+}
+
+.auth-body-content .input-container label {
+  color: #555;
+}
+
+.auth-body-content .input-container label svg {
+  color: #c084fc;
+}
+
+.auth-body-content .input-wrapper {
+  border-bottom: 2px solid #cc0000;
+}
+
+.auth-body-content .input-wrapper input {
+  color: #111;
+}
+
+.auth-submit {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.auth-submit-btn {
+  background-color: #cc0000;
+  border-radius: 4px;
+}
+
+.auth-submit-btn:hover {
+  background-color: #e00000;
+}
